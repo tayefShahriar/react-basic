@@ -1,12 +1,31 @@
 import React from 'react'
-import {useState} from 'react'
+import {useEffect} from 'react'
+import About from './About'
+import Axios from 'axios'
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+import Home from './Home'
+import Works from './Works'
 const App = ()=>{
-        const [number, setnumber] = useState(0)
     return(
         <div>
-            <button onClick={()=>setnumber(number-1)}>-</button>
-            <h1>{number}</h1>
-            <button onClick={()=>setnumber(number+1)}>+</button>
+            <BrowserRouter>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                   </li>
+                   <li>
+                    <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                    <Link to="/works">Work</Link>
+                </li>
+            </ul>
+            <Routes>
+            <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/about" element={<About/>}/>
+            <Route exact path="/works" element={<Works/>}/>
+            </Routes>
+            </BrowserRouter>
         </div>
     )
 }
